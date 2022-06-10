@@ -4,9 +4,16 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  // routes: [
-  //   { path: '/', component: '@/pages/index' },
-  // ],
+  analyze: {
+    analyzerMode: 'server',
+    analyzerPort: 8888,
+    openAnalyzer: true,
+    // generate stats file while ANALYZE_DUMP exist
+    generateStatsFile: false,
+    statsFilename: 'stats.json',
+    logLevel: 'info',
+    defaultSizes: 'parsed', // stat  // gzip
+  },
   routes: [
     {
       path: '/',
@@ -40,7 +47,7 @@ export default defineConfig({
     '/api/': {
       'target': 'https://pvp.qq.com/',
       'changeOrigin': true,
-      'pathRewrite': {"^/api/": ''}
+      'pathRewrite': { "^/api/": '' }
     }
   }
   // antd: {}
